@@ -1,5 +1,36 @@
+// import 'package:flutter/material.dart';
+// import 'kartu_mahasiswa.dart';
+
+// void main() {
+//   runApp(const MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Kartu Mahasiswa',
+//       debugShowCheckedModeBanner: false,
+//       home: Scaffold(
+//         backgroundColor: const Color(0xFFE0F2FE),
+//         body: Center(
+//           child: KartuMahasiswa(
+//             nama: 'Al-Farisi Rasyid Subekti',
+//             nim: '20240801162',
+//             programStudi: 'Teknik Informatika',
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
 import 'package:flutter/material.dart';
-import 'kartu_mahasiswa.dart';
+
+import 'theme/app_theme.dart';
+import 'widgets/buttons.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,16 +42,65 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Kartu Mahasiswa',
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: const Color(0xFFE0F2FE),
-        body: Center(
-          child: KartuMahasiswa(
-            nama: 'Al-Farisi Rasyid Subekti',
-            nim: '20240801162',
-            programStudi: 'Teknik Informatika',
-          ),
+      theme: AppTheme.light,
+      home: const HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Design System Demo'),
+      ),
+
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Universitas Esa Unggul',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            const Text(
+              'Tekan tombol di bawah untuk melihat lokasi kampus.',
+            ),
+
+            const SizedBox(height: 24),
+
+            AppButton(
+              label: 'Buka Akun Github',
+              icon: Icons.code,
+              url: 'https://github.com/alfaris-glitch',
+            ),
+
+            const SizedBox(height: 16),
+
+            AppButton(
+              label: 'Tes Tombol',
+              icon: Icons.touch_app,
+              onPressed: () {
+                debugPrint('Tombol berhasil ditekan!');
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Tombol berhasil ditekan!'),
+                  ),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'constans/colors.dart';
 
 class KartuMahasiswa extends StatelessWidget {
   final String nama;
@@ -18,7 +19,7 @@ class KartuMahasiswa extends StatelessWidget {
       width: 320.0,
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.primary,
         borderRadius: BorderRadius.circular(16.0),
         boxShadow: [
           BoxShadow(
